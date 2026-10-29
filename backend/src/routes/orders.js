@@ -64,8 +64,8 @@ router.post('/', asyncHandler(async (req, res) => {
         ...(feeCents ? [{ price_data: { currency, unit_amount: feeCents, product_data: { name: 'Delivery' } }, quantity: 1 }] : [])
       ],
       metadata: { orderId: String(order._id) },
-      success_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment-result?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/cart?cancelled=1`
+      success_url: `${process.env.CLIENT_URL || process.env.URL || 'http://localhost:5173'}/payment-result?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.CLIENT_URL || process.env.URL || 'http://localhost:5173'}/cart?cancelled=1`
     }, { idempotencyKey: `checkout-${order._id}` });
     order.stripeSessionId = session.id; await order.save();
     res.status(201).json({ method: 'Stripe', url: session.url, orderId: order.id });
