@@ -1,0 +1,16 @@
+FOREVER — MERN + STRIPE WINDOWS QUICK START
+============================================
+1. Install Node.js 20+ and MongoDB (local or Atlas).
+2. Extract project ZIP and open the folder in VS Code.
+3. Terminal:
+   npm install
+   Copy-Item backend/.env.example backend/.env
+   Copy-Item frontend/.env.example frontend/.env
+   Copy-Item admin/.env.example admin/.env
+4. Edit backend/.env: set MONGODB_URI, JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD.
+5. Terminal:
+   npm run seed
+   npm run dev
+6. Open http://localhost:5173 (shop) and http://localhost:5174 (admin).
+7. To enable test card payments, read README.md Stripe section.
+NOTE: Card payments require your own Stripe test-mode keys and webhook secret.

@@ -1,0 +1,20 @@
+import { Router } from 'express';
+import { z } from 'zod';
+import Product from '../models/Product.js';
+import { requireAuth } from '../middleware/auth.js';
+import { asyncHandler, apiError } from '../utils/security.js';
+const router = Router(); router.use(requireAuth);
+const schema = z.object({ items: z.array(z.object({ product: z.string().regex(/^[a-f0-9]{24}$/i), size: z.string().min(1).max(15), quantity: z.number().int().min(1).max(30) })).max(50) });
+router.get('/', (req, res) => res.json({ items: req.user.cart }));
+router.put('/', asyncHandler(async (req, res) => {
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) return apiError(res, 400, 'Invalid cart');
+  const incoming = parsed.data.items;
+  if (new Set(incoming.map(i=>i.product + ':' + i.size)).size !== incoming.length) return apiError(res, 400, 'Duplicate cart item');
+  const products = await Product.find({ _id: { $in: incoming.map(i=>i.product) }, active: true }).lean();
+  const map = new Map(products.map(p=>[String(p._id),p]));
+  if (incoming.some(i=>!map.get(i.product)?.sizes.includes(i.size))) return apiError(res, 400, 'Cart contains unavailable items');
+  req.user.cart = incoming; await req.user.save();
+  res.json({ items: req.user.cart });
+}));
+export default router;

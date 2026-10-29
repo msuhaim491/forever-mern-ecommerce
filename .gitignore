@@ -7,7 +7,7 @@ coverage/
 .vite/
 .cache/
 
-# Private config: NEVER commit live secrets
+# Never commit private environment configuration
 .env
 .env.*
 **/.env
@@ -20,14 +20,14 @@ coverage/
 id_rsa
 *service-account*.json
 
-# Runtime data and local uploads
+# Runtime and local database files
 backend/uploads/*
 !backend/uploads/.gitkeep
 *.sqlite
 *.db
 *.log
 
-# Local tools and editor files
+# Editor/system files
 .vscode/
 .idea/
 .DS_Store
