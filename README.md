@@ -1,5 +1,9 @@
 # FOREVER | Premium MERN E-commerce — Portfolio Project
 
+[![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
+
+**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Live demo:** not deployed yet · **Validation:** CI build checks passing; checkout and database integrations still require end-to-end tests.
+
 > **Status:** learning project / development build. Full end-to-end build and hosted payment integration have not yet been independently verified.
 
 **Portfolio publishing and validation checklist:** [PORTFOLIO-PUBLISHING.md](./PORTFOLIO-PUBLISHING.md)
