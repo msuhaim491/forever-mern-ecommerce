@@ -8,9 +8,12 @@ import Product from '../models/Product.js';
 import { requireAuth, requireAdmin } from '../middleware/auth.js';
 import { apiError, asyncHandler } from '../utils/security.js';
 const router = Router();
-const imageDir = path.resolve('uploads'); fs.mkdirSync(imageDir, { recursive: true });
+// Local disk uploads work in development, but a Netlify Function filesystem is ephemeral.
+const serverlessRuntime = Boolean(process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const imageDir = serverlessRuntime ? null : path.resolve('uploads');
+if (imageDir) fs.mkdirSync(imageDir, { recursive: true });
 const upload = multer({
-  storage: multer.diskStorage({ destination: imageDir, filename: (_, f, done) => done(null, crypto.randomUUID() + ({'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp'}[f.mimetype] || '.bin')) }),
+  storage: serverlessRuntime ? multer.memoryStorage() : multer.diskStorage({ destination: imageDir, filename: (_, f, done) => done(null, crypto.randomUUID() + ({'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp'}[f.mimetype] || '.bin')) }),
   limits: { fileSize: 4 * 1024 * 1024, files: 4 },
   fileFilter: (_, file, done) => done(null, ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype))
 });
@@ -42,12 +45,14 @@ router.get('/:id', asyncHandler(async (req, res) => {
   res.json({ product });
 }));
 router.post('/', requireAuth, requireAdmin, upload.array('files', 4), asyncHandler(async (req, res) => {
+  if (serverlessRuntime && req.files?.length) return apiError(res, 422, 'Image files cannot be stored permanently on the free serverless demo. Enter external HTTPS image URLs instead.');
   const parsed = schema.safeParse(normalize(req.body, req.files));
   if (!parsed.success) return apiError(res, 400, parsed.error.issues.map(x=>x.message).join(', '));
   const product = await Product.create(parsed.data);
   res.status(201).json({ product });
 }));
 router.put('/:id', requireAuth, requireAdmin, upload.array('files', 4), asyncHandler(async (req, res) => {
+  if (serverlessRuntime && req.files?.length) return apiError(res, 422, 'Image files cannot be stored permanently on the free serverless demo. Enter external HTTPS image URLs instead.');
   if (!/^[0-9a-f]{24}$/i.test(req.params.id)) return apiError(res, 404, 'Product not found');
   const original = await Product.findById(req.params.id);
   if (!original) return apiError(res, 404, 'Product not found');

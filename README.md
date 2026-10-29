@@ -1,5 +1,14 @@
 # FOREVER | Premium MERN E-commerce — Portfolio Project
 
+## Free full-stack deployment (Netlify)
+
+**Recommended zero-card portfolio option:** one Netlify Free site hosts the React storefront at `/`, React admin at `/admin`, and Express + MongoDB API at `/api` via Netlify Functions. The app builds with `npm run build:netlify`, configured in `netlify.toml`.
+
+**[Netlify deployment and safety instructions](./DEPLOY-NETLIFY.md)** · [Netlify's Express Functions guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/express/)
+
+> Status: deployment prepared, **not live**. The repository owner must connect Netlify to GitHub and configure private MongoDB/JWT environment variables in Netlify; Stripe test integration is optional. Local Windows development still uses `npm run dev` unchanged.
+
+
 [![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
 
 **Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Live demo:** not deployed yet · **Validation:** CI build checks passing; checkout and database integrations still require end-to-end tests.
