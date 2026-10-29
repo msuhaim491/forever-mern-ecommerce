@@ -1,0 +1,65 @@
+# FOREVER MERN e-commerce portfolio demo
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# DO NOT commit MongoDB connection strings, admin passwords, or Stripe keys.
+#
+# Names are used to construct non-secret public URLs; if Render assigns a
+# different domain, update CLIENT_URL, ADMIN_URL, PUBLIC_API_URL and both
+# VITE_API_URL values in the Render dashboard and redeploy.
+services:
+  - type: web
+    name: forever-mern-msuhaim491-api
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: npm run seed -w backend && npm run start -w backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLIENT_URL
+        value: https://forever-mern-msuhaim491-shop.onrender.com
+      - key: ADMIN_URL
+        value: https://forever-mern-msuhaim491-admin.onrender.com
+      - key: PUBLIC_API_URL
+        value: https://forever-mern-msuhaim491-api.onrender.com
+      - key: DELIVERY_FEE
+        value: "10"
+      - key: STRIPE_CURRENCY
+        value: usd
+
+  - type: web
+    name: forever-mern-msuhaim491-shop
+    runtime: static
+    branch: main
+    buildCommand: npm install && npm run build -w frontend
+    staticPublishPath: ./frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://forever-mern-msuhaim491-api.onrender.com
+
+  - type: web
+    name: forever-mern-msuhaim491-admin
+    runtime: static
+    branch: main
+    buildCommand: npm install && npm run build -w admin
+    staticPublishPath: ./admin/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://forever-mern-msuhaim491-api.onrender.com
