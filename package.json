@@ -2,12 +2,19 @@
   "name": "forever-mern-project",
   "private": true,
   "version": "1.0.0",
-  "workspaces": ["backend", "frontend", "admin"],
+  "workspaces": [
+    "backend",
+    "frontend",
+    "admin"
+  ],
   "scripts": {
     "dev": "concurrently -n API,SHOP,ADMIN -c cyan,green,magenta \"npm run dev -w backend\" \"npm run dev -w frontend\" \"npm run dev -w admin\"",
     "build": "npm run build -w frontend && npm run build -w admin",
     "seed": "npm run seed -w backend",
-    "check": "npm run check -w backend && npm run build"
+    "check": "npm run check -w backend && npm run build",
+    "build:netlify": "node scripts/build-netlify.mjs"
   },
-  "devDependencies": { "concurrently": "^9.1.2" }
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
