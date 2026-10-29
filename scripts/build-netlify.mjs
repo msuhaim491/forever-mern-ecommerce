@@ -15,7 +15,7 @@ function build(workspace, additionalEnv = {}) {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
-build('frontend');
+build('frontend', { VITE_DEMO_ONLY: 'true' });
 build('admin', { VITE_ADMIN_BASE: '/admin/' });
 
 const target = resolve(root, 'frontend/dist/admin');
