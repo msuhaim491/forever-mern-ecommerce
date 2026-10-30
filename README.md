@@ -6,7 +6,7 @@
 
 **[Netlify deployment and safety instructions](./DEPLOY-NETLIFY.md)** · [Netlify's Express Functions guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/express/)
 
-> Status: public Netlify site deployed. The project owner reports successful API health, products, admin login and a **complete customer COD checkout → Admin Orders visibility** test. Fulfillment status updates, Stripe test payments and security review are still pending. These results are user-reported, not independently automated end-to-end tests. Local Windows development still uses `npm run dev` unchanged.
+> Status: public Netlify site deployed. The project owner reports successful API health, products, admin login and a **complete customer COD checkout → Admin Orders visibility** test. The `Order Placed` → `Packing` admin/customer status sync has also passed in owner-run testing. Further fulfillment transitions, Stripe test payments and security review are still pending. These results are user-reported, not independently automated end-to-end tests. Local Windows development still uses `npm run dev` unchanged.
 
 
 [![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
