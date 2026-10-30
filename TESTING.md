@@ -15,14 +15,16 @@
 | Admin login | **PASS (owner-reported)** | Owner successfully authenticated |
 | Customer checkout with Cash on Delivery | **PASS (owner-reported)** | Owner placed a dummy COD order successfully |
 | The newly created order appears in Admin > Orders | **PASS (owner-reported)** | Owner confirmed the same test order is visible |
+| Admin changes order from `Order Placed` to `Packing` | **PASS (owner-reported)** | Owner confirmed successful update and persistent visibility in Admin |
+| Customer My Orders shows the same `Packing` status | **PASS (owner-reported)** | Owner confirmed status synchronized with Admin |
 
 ## Next functional regression checks
 
 Perform these **only on a dummy/test order**, with no real personal details:
 
 1. In **Admin > Orders**, select the dummy order. Note its last-eight-character order ID, total, quantity, product size and payment method.
-2. Change fulfillment status from `Order Placed` to `Packing`. Refresh Admin > Orders to confirm the status persists.
-3. In the customer account, open **My Orders** and refresh the page. Confirm the same order ID shows `Packing`.
+2. **Completed:** Admin updated `Order Placed` to `Packing` successfully (owner-reported).
+3. **Completed:** Customer My Orders displayed `Packing` after refresh (owner-reported).
 4. Return to Admin > Orders, change `Packing` to `Shipped`. Refresh Admin and customer orders; confirm both display `Shipped`.
 5. Check the cart is empty after COD checkout. Confirm the subtotal and total were computed correctly (default delivery fee: USD $10, unless configuration changed).
 6. Check customer authentication boundaries: after signing out, **My Orders** requires sign-in; sign in as the customer again and make sure their orders remain available.
@@ -30,7 +32,7 @@ Perform these **only on a dummy/test order**, with no real personal details:
 
 ### Important remaining work
 
-- **Not tested yet:** admin fulfillment transitions, customer order-status synchronization, order totals/cart cleanup and cross-account isolation.
+- **Not tested yet:** additional fulfillment transition (`Packing` → `Shipped`), cart cleanup and order totals, logout/auth boundaries, and cross-account isolation. The initial `Order Placed` → `Packing` synchronization **has passed** according to the owner.
 - **Not configured/verified:** Stripe **test-mode** payment, signed webhook, refund flow. Card checkout is disabled in the public Netlify demo until configured.
 - **Not production ready:** persistent image storage, real-payment eligibility, shipping/tax/inventory, and privacy/security review.
 - **COD payment state:** an order remains `unpaid` until cash collection is explicitly handled; marking an order `Delivered` does not automatically record receipt of cash in this learning implementation. Do not interpret `Delivered` as evidence cash was collected.
