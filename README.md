@@ -1,25 +1,34 @@
-# FOREVER | Premium MERN E-commerce — Portfolio Project
+# FOREVER — Premium MERN E-commerce
 
-## Free full-stack deployment (Netlify)
+**A modern, full-stack fashion storefront with a separate admin studio.**
 
-**Current portfolio hosting:** one Netlify Free site hosts the React storefront at `/`, React admin at `/admin`, and Express + MongoDB API at `/api` via Netlify Functions. The app builds with `npm run build:netlify`, configured in `netlify.toml`.
+[![GitHub Actions: source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
+![Portfolio demo](https://img.shields.io/badge/status-live%20portfolio%20demo-246a60)
+![React](https://img.shields.io/badge/React-18-149eca)
+![Node.js](https://img.shields.io/badge/Node.js%20%2B%20Express-API-347a45)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47a248)
 
-**[Netlify deployment and safety instructions](./DEPLOY-NETLIFY.md)** · [Netlify's Express Functions guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/express/)
+## Live homepage preview
 
-> Status: public Netlify site deployed. The project owner reports successful API health, products, admin login and a **complete customer COD checkout → Admin Orders visibility** test. The `Order Placed` → `Packing` admin/customer status sync has also passed in owner-run testing. Further fulfillment transitions, Stripe test payments and security review are still pending. These results are user-reported, not independently automated end-to-end tests. Local Windows development still uses `npm run dev` unchanged.
+[![Screenshot of the live FOREVER e-commerce homepage featuring a fashion hero and navigation](./assets/forever-home-preview.webp)](https://forever-mern-suhaim491.netlify.app/)
 
+*Actual screenshot captured from the deployed customer storefront, not a design mockup. [View the full-size screenshot](./assets/forever-home-preview.webp).*
 
-[![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
+**[Open live storefront](https://forever-mern-suhaim491.netlify.app/)** · **[View admin login](https://forever-mern-suhaim491.netlify.app/admin)** · **[Read test results](./TESTING.md)** · **[Deployment guide](./DEPLOY-NETLIFY.md)**
 
-**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Public demo:** [Open storefront](https://forever-mern-suhaim491.netlify.app/) · [Admin login](https://forever-mern-suhaim491.netlify.app/admin) · **Validation:** CI passed; owner-verified COD order creation and Admin Orders display. [Live test report](./TESTING.md). Stripe payments and fulfillment transitions still need testing.
+## What it does
 
-> **Status:** learning project / development build. Full end-to-end build and hosted payment integration have not yet been independently verified.
+| Customer storefront | Management studio | Platform |
+|:--|:--|:--|
+| Browse collections, search/filter products, choose sizes, use the cart, register/login and place COD test orders | Admin-only login, product management, sales overview, order listing and fulfillment status updates | React + Vite · Node.js / Express · MongoDB Atlas · Netlify Functions · Stripe test integration in source |
 
-**Portfolio publishing and validation checklist:** [PORTFOLIO-PUBLISHING.md](./PORTFOLIO-PUBLISHING.md)
+**Demo status:** Public website deployed. The project owner has confirmed the products API, admin login, a successful customer **Cash on Delivery → Admin Orders** flow, and an **Order Placed → Packing** status update appearing in both admin and customer views. GitHub CI builds pass. These are owner-run manual checks, not an independent automated E2E test suite.
 
+**Limitations:** Stripe is **not enabled on this public demo**; card payments and webhooks remain unverified. Serverless file uploads are disabled in favor of HTTPS image URLs. Inventory, refunds, shipping/tax rules, security audits, and production safeguards require additional work. This is a **portfolio learning project, not a production-ready commercial store**.
 
-An independent educational implementation inspired by [GreatStack's Full Stack E-commerce MERN tutorial](https://www.youtube.com/watch?v=7E6um7NGmeE). This is **not** a copy of the creator's source code or licensed artwork. Frontend visuals are inspired by a minimalist fashion store, with editable sample product data and externally hosted Unsplash photos.
+## Project background
 
+This is an independent educational implementation inspired by [GreatStack's MERN e-commerce tutorial](https://www.youtube.com/watch?v=7E6um7NGmeE). It is not GreatStack's source repository or a client commission. The editorial styling and layout have been independently developed; sample product photos load from Unsplash.
 
 ## Premium Edition V2 — UI and motion
 
