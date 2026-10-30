@@ -6,12 +6,12 @@
 
 **[Netlify deployment and safety instructions](./DEPLOY-NETLIFY.md)** · [Netlify's Express Functions guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/express/)
 
-> Status: public Netlify site deployed. The repository owner reports that the API health and products endpoints respond successfully; live end-to-end checkout and Stripe tests have **not yet been independently verified**. Local Windows development still uses `npm run dev` unchanged.
+> Status: public Netlify site deployed. The project owner reports successful API health, products, admin login and a **complete customer COD checkout → Admin Orders visibility** test. Fulfillment status updates, Stripe test payments and security review are still pending. These results are user-reported, not independently automated end-to-end tests. Local Windows development still uses `npm run dev` unchanged.
 
 
 [![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
 
-**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Public demo:** [Open storefront](https://forever-mern-suhaim491.netlify.app/) · [Admin login](https://forever-mern-suhaim491.netlify.app/admin) · **Validation:** CI passing; owner reports successful API health/products responses. Checkout and Stripe require testing.
+**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Public demo:** [Open storefront](https://forever-mern-suhaim491.netlify.app/) · [Admin login](https://forever-mern-suhaim491.netlify.app/admin) · **Validation:** CI passed; owner-verified COD order creation and Admin Orders display. [Live test report](./TESTING.md). Stripe payments and fulfillment transitions still need testing.
 
 > **Status:** learning project / development build. Full end-to-end build and hosted payment integration have not yet been independently verified.
 
