@@ -2,16 +2,16 @@
 
 ## Free full-stack deployment (Netlify)
 
-**Recommended zero-card portfolio option:** one Netlify Free site hosts the React storefront at `/`, React admin at `/admin`, and Express + MongoDB API at `/api` via Netlify Functions. The app builds with `npm run build:netlify`, configured in `netlify.toml`.
+**Current portfolio hosting:** one Netlify Free site hosts the React storefront at `/`, React admin at `/admin`, and Express + MongoDB API at `/api` via Netlify Functions. The app builds with `npm run build:netlify`, configured in `netlify.toml`.
 
 **[Netlify deployment and safety instructions](./DEPLOY-NETLIFY.md)** · [Netlify's Express Functions guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/express/)
 
-> Status: deployment prepared, **not live**. The repository owner must connect Netlify to GitHub and configure private MongoDB/JWT environment variables in Netlify; Stripe test integration is optional. Local Windows development still uses `npm run dev` unchanged.
+> Status: public Netlify site deployed. The repository owner reports that the API health and products endpoints respond successfully; live end-to-end checkout and Stripe tests have **not yet been independently verified**. Local Windows development still uses `npm run dev` unchanged.
 
 
 [![Source checks](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml/badge.svg)](https://github.com/msuhaim491/forever-mern-ecommerce/actions/workflows/ci.yml)
 
-**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Live demo:** not deployed yet · **Validation:** CI build checks passing; checkout and database integrations still require end-to-end tests.
+**Repository:** [GitHub source](https://github.com/msuhaim491/forever-mern-ecommerce) · **Public demo:** [Open storefront](https://forever-mern-suhaim491.netlify.app/) · [Admin login](https://forever-mern-suhaim491.netlify.app/admin) · **Validation:** CI passing; owner reports successful API health/products responses. Checkout and Stripe require testing.
 
 > **Status:** learning project / development build. Full end-to-end build and hosted payment integration have not yet been independently verified.
 
